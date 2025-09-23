@@ -9,7 +9,7 @@ import pages.ShopPage;
 
 import java.time.Duration;
 
-public class BaseTestShop {
+public class BaseShopTest {
     public WebDriver browser;
     ShopPage shopPage;
 

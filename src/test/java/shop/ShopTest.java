@@ -9,7 +9,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class ShopTest extends BaseTestShop {
+public class ShopTest extends BaseShopTest {
     @Test
     public void checkLoginShop() throws InterruptedException {
         // ввод корректных данных
@@ -17,7 +17,6 @@ public class ShopTest extends BaseTestShop {
         shopPage.open();
         shopPage.loginWithUsername("standard_user");
         shopPage.loginWithPassword("secret_sauce");
-        //Thread.sleep(6000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']")));
         boolean IsPresent = browser.findElement(By.xpath("//span[@class='title']")).isDisplayed();
         assertTrue(IsPresent);
