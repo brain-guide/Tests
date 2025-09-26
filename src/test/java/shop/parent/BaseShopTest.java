@@ -1,17 +1,19 @@
-package shop;
+package shop.parent;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.ShopPage;
+import shop.pages.ProductsPage;
+import shop.pages.LoginShopPage;
 
 import java.time.Duration;
 
 public class BaseShopTest {
-    public WebDriver browser;
-    ShopPage shopPage;
+    public WebDriver driver;
+    protected LoginShopPage loginShopPage;
+    protected ProductsPage productsPage;
 
     // это будет выполняться перед каждым тестовым методом.
     @BeforeMethod
@@ -19,15 +21,17 @@ public class BaseShopTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--guest");
-        browser = new ChromeDriver(options);
-        browser.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        shopPage = new ShopPage(browser);
+
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        loginShopPage = new LoginShopPage(driver);
+        productsPage = new ProductsPage(driver);
     }
 
     // это будет выполняться после  каждого  тестового метода.
     @AfterMethod
+    // закрытие браузера
     public void close() {
-        // закрытие браузера
-        browser.quit();
+        driver.quit();
     }
 }

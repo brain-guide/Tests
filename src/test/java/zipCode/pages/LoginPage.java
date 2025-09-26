@@ -1,4 +1,4 @@
-package pages;
+package zipCode.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
     WebDriver browser;
 
-    public LoginPage(WebDriver browser) {
-        this.browser = browser;
+    public LoginPage(WebDriver driver) {
+        this.browser = driver;
     }
 
     // константа, не изменна, если есть эти три слова
