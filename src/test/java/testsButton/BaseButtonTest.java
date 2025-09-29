@@ -10,6 +10,7 @@ import java.time.Duration;
 
 public class BaseButtonTest {
     public WebDriver browser;
+    protected ButtonPage buttonPage;
 
     // это будет выполняться перед каждым тестовым методом.
     @BeforeMethod
@@ -18,6 +19,7 @@ public class BaseButtonTest {
         options.addArguments("start-maximized");
         browser = new ChromeDriver(options);
         browser.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        buttonPage = new ButtonPage(browser);
     }
 
     // это будет выполняться после  каждого  тестового метода.
