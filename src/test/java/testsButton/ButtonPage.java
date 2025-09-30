@@ -13,40 +13,24 @@ public class ButtonPage extends BasePage {
     }
 
     // константа, не изменна, если есть эти три слова
-    private int addedCount = 0;
-    private int deletedCount = 0;
     private static final By ADD_ELEMENT = By.xpath("//*[text()='Add Element']");
     private static final By DELETE_ELEMENT = By.xpath("//*[text()='Delete']");
-    private static final By LIST = By.xpath("//*[text()='Delete']");
 
     public void open() {
         browser.get(BASE_URL);
     }
 
     //добавить кнопку
-    public void addButton(int addClicks) {
-        for (int i = 0; i < addClicks; i++) {
-            browser.findElement(ADD_ELEMENT).click();
-        }
-        addedCount += addClicks; // считаем добавленные
+    public void addButton() {
+        browser.findElement(ADD_ELEMENT).click();
     }
 
     //удалить кнопку
-    public void deleteButton(int deleteClicks) {
-        for (int i = 0; i < deleteClicks; i++) {
-            browser.findElement(DELETE_ELEMENT).click();
-        }
-        deletedCount += deleteClicks; // считаем удаленные
+    public void deleteButton() {
+        browser.findElement(DELETE_ELEMENT).click();
     }
 
-    // Формула расчета ожидаемого количества (использует внутренние счетчики)
-    public int calculateExpected() {
-        return addedCount - deletedCount;
-    }
-
-    // Считаем реальное количество кнопок на странице
-    public int getListButtonsCount() {
-        List<WebElement> list = browser.findElements(LIST);
-        return list.size();
+    public List<WebElement> getListButtons() {
+        return browser.findElements(DELETE_ELEMENT);
     }
 }

@@ -14,8 +14,6 @@ public class ShopTest extends BaseShopTest {
         loginShopPage.loginWithUsername("standard_user");
         loginShopPage.loginWithPassword("secret_sauce");
         productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");
-
-        boolean IsPresent = driver.findElement(By.xpath("//span[@class='title']")).isDisplayed();
         assertTrue(productsPage.isTitlePresent());
         assertEquals(productsPage.getTitle(), "Products", "названия не совпадают");
     }
